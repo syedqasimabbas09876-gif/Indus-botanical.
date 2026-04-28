@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indus Botanical | Global Supply Chain Excellence</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;800&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+
+<style>
+:root { --accent: #8F9E8B; --dark: #0D0D0D; --linen: #F9F9F7; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--linen); color: var(--dark); overflow-x: hidden; }
+.serif { font-family: 'Playfair Display', serif; }
+
+/* Efficiency: Glassmorphism UI */
+.glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(0,0,0,0.05); }
+.hero-gradient { background: radial-gradient(circle at top right, #E8EDE6, transparent); }
+
+/* Creative Interaction: Floating Elements */
+.float-btn { transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+.float-btn:hover { transform: scale(1.1) translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+/* Modern Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+</style>
+</head>
+<body class="antialiased">
+
+<nav class="fixed w-full z-50 px-8 py-6 flex justify-between items-center glass-panel">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-black text-white flex items-center justify-center rounded-full font-bold">IB</div>
+<span class="font-bold tracking-tighter uppercase text-sm">Indus Botanical</span>
+</div>
+<div class="flex gap-8 items-center">
+<a href="https://instagram.com/Indus_botanical" target="_blank" class="text-[10px] font-bold uppercase tracking-widest hover:text-[#8F9E8B]">Instagram</a>
+<a href="#inquiry" class="bg-black text-white px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest float-btn">Request Quote</a>
+</div>
+</nav>
+
+<section class="min-h-screen pt-40 px-8 hero-gradient relative">
+<div class="max-w-7xl mx-auto text-center">
+<h1 class="serif text-7xl md:text-[120px] leading-none mb-10 opacity-0 hero-title">
+Sovereign <br> <span class="italic text-[#8F9E8B]">Botanicals.</span>
+</h1>
+
+<div class="max-w-2xl mx-auto mt-20 opacity-0 hero-search">
+<div class="glass-panel p-2 rounded-full flex items-center shadow-2xl">
+<input type="text" id="locSearch" onkeyup="filterLocations()" placeholder="VALIDATE INTERNATIONAL PORT AVAILABILITY..." class="w-full bg-transparent p-4 text-[10px] font-bold tracking-[0.2em] outline-none px-8">
+</div>
+<div id="locDrop" class="hidden glass-panel mt-4 rounded-3xl p-6 text-left shadow-2xl space-y-2 max-h-60 overflow-y-auto"></div>
+</div>
+</div>
+</section>
+
+<section class="max-w-7xl mx-auto py-40 px-8 grid grid-cols-1 md:grid-cols-3 gap-16">
+
+<div class="product-card opacity-0 translate-y-20">
+<div class="relative overflow-hidden rounded-[40px] mb-8 group">
+<img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=800" class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110">
+<div class="absolute top-6 right-6 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-[10px] font-bold">100% ORGANIC</div>
+</div>
+<h3 class="serif text-3xl mb-6">Moringa Master-Batch</h3>
+<div class="glass-panel p-8 rounded-[30px]">
+<p class="text-[10px] font-bold opacity-40 uppercase mb-4 tracking-widest italic">Live Calculation ($15/KG)</p>
+<input type="number" id="qty1" oninput="calculate(1, 15)" placeholder="BATCH QTY (KG)" class="w-full bg-transparent text-4xl font-light mb-4 outline-none">
+<div class="flex justify-between items-center border-t border-black/5 pt-6">
+<span class="text-[10px] font-bold uppercase tracking-widest">Global Value</span>
+<span class="text-2xl font-bold text-[#8F9E8B]">$ <span id="tot1">0.00</span></span>
+</div>
+</div>
+</div>
+
+<div class="product-card opacity-0 translate-y-20">
+<div class="relative overflow-hidden rounded-[40px] mb-8 group">
+<img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&q=80&w=800" class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110">
+<div class="absolute top-6 right-6 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-[10px] font-bold">PHYTO-CERTIFIED</div>
+</div>
+<h3 class="serif text-3xl mb-6">Botanical Neem Core</h3>
+<div class="glass-panel p-8 rounded-[30px]">
+<p class="text-[10px] font-bold opacity-40 uppercase mb-4 tracking-widest italic">Live Calculation ($12/KG)</p>
+<input type="number" id="qty2" oninput="calculate(2, 12)" placeholder="BATCH QTY (KG)" class="w-full bg-transparent text-4xl font-light mb-4 outline-none">
+<div class="flex justify-between items-center border-t border-black/5 pt-6">
+<span class="text-[10px] font-bold uppercase tracking-widest">Global Value</span>
+<span class="text-2xl font-bold text-[#8F9E8B]">$ <span id="tot2">0.00</span></span>
+</div>
+</div>
+</div>
+
+<div class="product-card opacity-0 translate-y-20">
+<div class="relative overflow-hidden rounded-[40px] mb-8 group">
+<img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=800" class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110">
+<div class="absolute top-6 right-6 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-[10px] font-bold">EXPORT READY</div>
+</div>
+<h3 class="serif text-3xl mb-6">Premium Rosemary</h3>
+<div class="glass-panel p-8 rounded-[30px]">
+<p class="text-[10px] font-bold opacity-40 uppercase mb-4 tracking-widest italic">Live Calculation ($18/KG)</p>
+<input type="number" id="qty3" oninput="calculate(3, 18)" placeholder="BATCH QTY (KG)" class="w-full bg-transparent text-4xl font-light mb-4 outline-none">
+<div class="flex justify-between items-center border-t border-black/5 pt-6">
+<span class="text-[10px] font-bold uppercase tracking-widest">Global Value</span>
+<span class="text-2xl font-bold text-[#8F9E8B]">$ <span id="tot3">0.00</span></span>
+</div>
+</div>
+</div>
+</section>
+
+<section id="inquiry" class="max-w-5xl mx-auto my-60 px-8">
+<div class="glass-panel p-20 rounded-[60px] relative overflow-hidden">
+<div class="absolute -top-20 -right-20 w-60 h-60 bg-[#E8EDE6] rounded-full blur-3xl"></div>
+<h2 class="serif text-5xl mb-16">Request Formal <br><span class="italic">Export Documentation.</span></h2>
+
+<form action="https://formspree.io/f/YOUR_ID_HERE" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+<div class="space-y-12">
+<input type="text" name="name" placeholder="PRINCIPAL ENTITY NAME" required class="w-full bg-transparent border-b border-black/10 py-4 focus:border-black transition-all text-xs font-bold tracking-widest outline-none">
+<input type="email" name="email" placeholder="CORPORATE EMAIL" required class="w-full bg-transparent border-b border-black/10 py-4 focus:border-black transition-all text-xs font-bold tracking-widest outline-none">
+</div>
+<div class="space-y-12">
+<textarea name="address" placeholder="FULL LOGISTICS ADDRESS (PORT/CITY/REGION)" required rows="4" class="w-full bg-transparent border border-black/10 p-6 rounded-3xl focus:border-black outline-none text-xs font-bold tracking-widest"></textarea>
+</div>
+<button type="submit" class="md:col-span-2 bg-black text-white py-8 rounded-full text-[10px] font-bold tracking-[0.5em] uppercase float-btn">Initialize Inquiry</button>
+</form>
+</div>
+</section>
+
+<div id="ai-trigger" class="fixed bottom-10 left-10 glass-panel px-6 py-4 rounded-full font-bold text-[10px] tracking-widest cursor-pointer z-50 float-btn">
+✨ PURE AI BOTANIST
+</div>
+
+<div id="ai-window" class="fixed bottom-28 left-10 w-80 glass-panel rounded-[32px] shadow-2xl z-50 hidden overflow-hidden scale-90 opacity-0">
+<div class="bg-black p-6 text-white text-[10px] font-bold tracking-widest flex justify-between">
+<span>EXPERT SYSTEM</span>
+<span class="cursor-pointer" onclick="toggleAI()">CLOSE</span>
+</div>
+<div class="p-8 space-y-4" id="ai-chat">
+<button onclick="aiResponse('price')" class="w-full text-left p-4 rounded-2xl border border-black/5 text-[10px] font-bold hover:bg-[#E8EDE6]">CHECK BULK QUOTATIONS</button>
+<button onclick="aiResponse('shipping')" class="w-full text-left p-4 rounded-2xl border border-black/5 text-[10px] font-bold hover:bg-[#E8EDE6]">GLOBAL HUB LOCATIONS</button>
+</div>
+</div>
+
+<a href="https://wa.me/923299718034" target="_blank" class="fixed bottom-10 right-10 bg-[#25D366] text-white w-16 h-16 flex items-center justify-center rounded-full shadow-2xl z-50 float-btn font-bold">WA</a>
+
+<script>
+// High-Efficiency Logic
+const calculate = (id, price) => {
+const val = document.getElementById('qty' + id).value;
+document.getElementById('tot' + id).innerText = (val * price).toLocaleString(undefined, {minimumFractionDigits: 2});
+}
+
+// GSAP Animations (Super Ultra Creativity)
+window.onload = () => {
+const tl = gsap.timeline();
+tl.to(".hero-title", { opacity: 1, y: -20, duration: 1.5, ease: "expo.out" })
+.to(".hero-search", { opacity: 1, y: -10, duration: 1 }, "-=1")
+.to(".product-card", { opacity: 1, y: 0, duration: 1, stagger: 0.3, ease: "power4.out" }, "-=0.5");
+};
+
+// AI Assistant Window Logic
+const toggleAI = () => {
+const win = document.getElementById('ai-window');
+if(win.classList.contains('hidden')) {
+win.classList.remove('hidden');
+gsap.to(win, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out" });
+} else {
+gsap.to(win, { opacity: 0, scale: 0.9, duration: 0.3, onComplete: () => win.classList.add('hidden') });
+}
+}
+document.getElementById('ai-trigger').onclick = toggleAI;
+
+function aiResponse(type) {
+const chat = document.getElementById('ai-chat');
+const msg = type === 'price' ? "Bulk rates are dynamically set between $12-$18/KG based on batch purity." : "We manage logistics for USA, UK, UAE, and EU Ports.";
+chat.innerHTML += `<div class="p-4 bg-[#E8EDE6] rounded-2xl text-[10px] font-bold leading-relaxed"><b>EXPERT:</b> ${msg}</div>`;
+}
+
+// Shipping Search Data
+const hubs = ["USA (ILLINOIS)", "USA (TEXAS)", "UK (LONDON)", "UAE (DUBAI)", "GERMANY (HAMBURG)"];
+function filterLocations() {
+const input = document.getElementById('locSearch').value.toUpperCase();
+const drop = document.getElementById('locDrop');
+drop.innerHTML = '';
+if(input) {
+drop.classList.remove('hidden');
+hubs.filter(h => h.includes(input)).forEach(h => {
+const d = document.createElement('div');
+d.className = "p-3 hover:bg-[#E8EDE6] rounded-xl cursor-pointer text-[10px] font-bold tracking-widest";
+d.innerText = h;
+d.onclick = () => { document.getElementById('locSearch').value = h; drop.classList.add('hidden'); };
+drop.appendChild(d);
+});
+} else { drop.classList.add('hidden'); }
+}
+</script>
+</body>
+</html>
